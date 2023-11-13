@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,300;1,400;1,600;1,700;1,800;1,900&family=Roboto:wght@100;500;700;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #1A1A41;
+    overflow-x: hidden;
+    /* position: relative; */
+    /* min-height: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+}
+
+h1{
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    /* border: 1px solid #eee; */
+    height: 10rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    background-color: #84849C;
+}
+
+.addbook{
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-book{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 3rem;
+    width: 25%;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: 900;
+}
+
+.add-book:hover{
+    background-color: #84849C;
+    color: #fff;
+}
+
+.add-book:active{
+    background-color: #F4F4FB;
+    color: #1A1A41;
+}
+
+
+.container{
+    width: 100%;
+    height: 100vh;
+}
+
+
+.form{
+    display: none;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.9);
+    
+}
+
+.form input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #eee;
+    padding: 1rem;
+    width: 80%;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.submit{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 80%;
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: #84849C;
+    color: #fff;
+    cursor: pointer;
+}
+.populateBook{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.book-info{
+    margin: 1rem;
+    width: 25%;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.book-info h3, p, button {
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+
+.book-info h3{
+    font-weight: 700;
+    padding-top: 1rem;
+}
+.book-info button{
+    width: 80%;
+}
