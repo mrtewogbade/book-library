@@ -10,16 +10,15 @@
 </head>
 <body>
 
+    
 
-    <form action="" class="form">
+
+    <form id="new-book-form" class="form">
         <input id="title" type="text" placeholder="Title" required>
         <input id="author" type="text" placeholder="Author" required>
         <input id="pages" type="text" placeholder="Pages" required>
-        <select name="" id="">
-            <option value="">Read</option>
-            <option value="">Not read yet</option>
-        </select>
-
+        <label for="checkbox">Read?</label>
+        <input type="checkbox" placeholder="Read" id="read">
         <button type="submit" class="submit">Submit</button>
         <p id="para"></p>
     </form>
@@ -35,22 +34,18 @@
                 <button type="submit" class="add-book"> + Add Book</button>
             </div>
 
-            <div class="populateBook">
+            <div class="library">
                 
-                <div class="book-info">
+                <!-- <div class="book-info">
                     <h3>Book Title</h3>
                     <p>Author</p>
                     <p>Pages</p>
                     <button>Read</button>
                     <button>Remove</button>
-                </div>
-                <div class="book-info">
-                    <h3>Book Title</h3>
-                    <p>Author</p>
-                    <p>Pages</p>
-                    <button>Read</button>
-                    <button>Remove</button>
-                </div>
+                </div> -->
+
+                
+
             </div>
 
             

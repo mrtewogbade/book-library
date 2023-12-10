@@ -1,62 +1,83 @@
-const addBookBtn = document.querySelector('.add-book');
-const submitBtn = document.querySelector ('.submit');
-const form = document.querySelector('form');
+let myLibrary = [];
+
+function Book(title, author, pages, isRead) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.isRead = isRead;
+}
+
+Book.prototype.toggleRead = function () {
+  this.isRead = !this.isRead;
+};
+
+function toggleRead(index) {
+  myLibrary[index].toggleRead();
+  render();
+}
 
 
 
+function render() {
+  let libraryEl = document.querySelector(".library");
 
-addBookBtn.addEventListener('click', () => {
-     form.style.display = 'flex';
-})
+  // Check if #library element exists
+  if (libraryEl) {
+    libraryEl.innerHTML = "";
 
+    for (let i = 0; i < myLibrary.length; i++) {
+      let book = myLibrary[i];
+      let bookEl = document.createElement("div");
+      bookEl.setAttribute("class", "book-info");
 
+      bookEl.innerHTML = `
+                <div>
+                    <h3>Title: ${book.title}</h3>
+                    <p>Author: ${book.author}</p>
+                    <p>Pages: ${book.pages}</p>
+                    <p>Status: ${book.isRead ? "Read" : "Not Read"}
+                    <button onclick="removeBook(${i})">Remove</button>
+                    <button class="toggle-read-btn" onclick="toggleRead(${i})">ToggleRead</button>
+                </div>
+            `;
+      libraryEl.appendChild(bookEl);
+    }
+  } else {
+    console.error("#library element not found");
+  }
+}
 
-const errorMsg = querySelector('#para');
-const title = document.querySelector('#title')
-const author = document.querySelector('#author')
-const pages = document.querySelector('#pages')
-const isRead = document.querySelector('#isRead')
+function removeBook(index) {
+  console.log(index);
+  myLibrary.splice(index, 1);
 
-const inputs = [author, pages, isRead, title]
+  render();
+}
 
-inputs.forEach((input) => {
-    input.addEventListener('focusin', () =>{
-        errorMsg.textContent = '';
-        item.classList.remove('error');
+function addBookToLibrary() {
+  //do stuff here
 
-    })
+  let title = document.querySelector("#title").value;
+  let author = document.getElementById("author").value;
+  let pages = document.querySelector("#pages").value;
+  let read = document.querySelector("#read").checked;
+  let newBook = new Book(title, author, pages, read);
+
+  myLibrary.push(newBook);
+  render();
+}
+
+let addBookBtn = document.querySelector(".add-book");
+addBookBtn.addEventListener("click", () => {
+  let formEl = document.querySelector(".form");
+  formEl.style.display = "flex";
 });
 
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+document.querySelector("#new-book-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  addBookToLibrary();
+  console.log("clicked");
 
-    const title = document.querySelector('#title').value;
-    const author = document.querySelector('#author').value;
-    const pages = document.querySelector('#pages').value;
-    const isRead = document.querySelector('#isRead').value;
-
-    if(title === '' || author === '' || pages === '' || isRead === ''){
-        errorMsg.textContent = 'Please fill in all fields';
-        item.classList.add('error');
-    } else {
-        addBookToLibrary(title, author, pages, isRead);
-        form.style.display = 'none';
-    }
-
-})
-
-const myLibrary = [];
-
-const Book = function(title, author, pages, isRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}
-
-const addBookToLibrary = function(title, author, pages, isRead){
-    const newBook = new Book (title, author, pages, isRead);
-    myLibrary.push(newBook);
-}
-
-console.log(Book);
+  let formEl = document.querySelector(".form");
+  formEl.style.display = "none";
+});
